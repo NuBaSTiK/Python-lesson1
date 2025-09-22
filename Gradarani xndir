@@ -1,0 +1,33 @@
+data = {
+    "Armen": {"angleren": 10, "ruseren": 7, "math": 9},
+    "Hayk":  {"angleren": 14, "ruseren": 18, "math": 12}
+}
+
+student_averages = {}
+for student, subjects in data.items():
+    avg = sum(subjects.values()) / len(subjects)
+    student_averages[student] = avg
+
+subject_totals = {}
+subject_counts = {}
+
+for subjects in data.values():
+    for subject, grade in subjects.items():
+        if subject not in subject_totals:
+            subject_totals[subject] = grade
+            subject_counts[subject] = 1
+        else:
+            subject_totals[subject] += grade
+            subject_counts[subject] += 1
+
+subject_averages = {}
+for subject in subject_totals:
+    subject_averages[subject] = subject_totals[subject] / subject_counts[subject]
+
+print("Amen usanoxi mijin gnahatakany:")
+for student, avg in student_averages.items():
+    print(f"{student}: {avg}")
+print("\n")
+print("Amen ararkayi mijin gnahatakany xmbum:")
+for subject, avg in subject_averages.items():
+    print(f"{subject}: {avg}")
